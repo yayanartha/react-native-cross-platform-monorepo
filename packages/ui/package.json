@@ -1,19 +1,30 @@
 {
   "name": "ui",
-  "version": "0.0.0",
-  "main": "./index.tsx",
-  "types": "./index.tsx",
-  "license": "MIT",
+  "version": "0.0.1",
+  "sideEffects": [
+    "*.css"
+  ],
+  "private": true,
+  "types": "./types/index",
+  "main": "index.ts",
+  "module:jsx": "src",
+  "files": [
+    "types",
+    "dist"
+  ],
   "scripts": {
-    "lint": "eslint *.ts*"
+    "build": "tamagui-build",
+    "watch": "tamagui-build --watch"
+  },
+  "dependencies": {
+    "@tamagui/animations-react-native": "^1.0.13",
+    "@tamagui/font-inter": "^1.0.13",
+    "@tamagui/react-native-media-driver": "^1.0.13",
+    "@tamagui/shorthands": "^1.0.13",
+    "@tamagui/theme-base": "^1.0.13",
+    "tamagui": "^1.0.13"
   },
   "devDependencies": {
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
-    "react": "^18.2.0",
-    "tsconfig": "workspace:*",
-    "typescript": "^4.5.2"
+    "@tamagui/build": "^1.0.13"
   }
 }

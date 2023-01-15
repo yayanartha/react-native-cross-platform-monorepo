@@ -7,19 +7,36 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "mobile": "cd apps/mobile && yarn start",
+    "watch": "yarn workspaces foreach -pi run watch",
+    "web": "yarn build && cd apps/web && yarn next",
+    "web:extract": "DISABLE_EXTRACTION=false yarn workspace web dev",
+    "web:prod": "yarn workspace web build",
+    "web:prod:serve": "yarn workspace web serve",
+    "postinstall": "yarn build",
+    "build": "yarn workspaces foreach --exclude web -pi run build",
+    "upgrade:tamagui": "manypkg upgrade tamagui && manypkg upgrade @tamagui && manypkg upgrade tamagui-loader && manypkg upgrade react-native-web-lite"
   },
   "devDependencies": {
-    "eslint-config-custom": "workspace:*",
+    "@manypkg/cli": "^0.19.2",
+    "eslint": "^8.32.0",
     "prettier": "latest",
-    "turbo": "latest"
+    "turbo": "latest",
+    "typescript": "^4.7.4"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
-  "packageManager": "pnpm@7.25.0"
+  "dependencies": {
+    "@babel/runtime": "^7.18.9"
+  },
+  "resolutions": {
+    "esbuild": "0.15.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-refresh": "^0.14.0",
+    "react-native-svg": "13.4.0",
+    "react-native-web": "0.18.9"
+  },
+  "packageManager": "yarn@3.3.1"
 }

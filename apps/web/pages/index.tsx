@@ -1,10 +1,3 @@
-import { Button } from "ui";
+import { HomeScreen } from 'app/features/home/screen'
 
-export default function Web() {
-  return (
-    <div>
-      <h1>Web</h1>
-      <Button />
-    </div>
-  );
-}
+export default HomeScreen
